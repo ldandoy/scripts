@@ -34,6 +34,10 @@ sudo iptables -A OUTPUT -p tcp --dport 8069 -m state --state NEW,ESTABLISHED,REL
 # Règles envoie MAIL
 sudo iptables -A INPUT -p tcp --sport 25 -m state --state ESTABLISHED,RELATED -j ACCEPT
 sudo iptables -A OUTPUT -p tcp --dport 25 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A INPUT -p tcp --sport 993 -m state --state ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --dport 993 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A INPUT -p tcp --sport 465 -m state --state ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --dport 465 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
 
 # Règles HTTP (Apache)
 sudo iptables -A INPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
